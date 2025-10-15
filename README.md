@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Кенесары Қасымұлы — толық және заманауи сайт</title>
+<style>
+  :root{
+    --bg:#0f1720; --panel:#0b1220; --muted:#9aa4b2; --accent:#c77b39; --accent-2:#7fb3ff;
+    --card:#0f1726; --glass: rgba(255,255,255,0.03);
+    --maxw:1100px; --radius:12px;
+  }
+  /* Reset */
+  *{box-sizing:border-box}
+  html,body{height:100%;margin:0;font-family:Inter, "Segoe UI", Georgia, serif;background:linear-gradient(180deg,#f7f5ee,#efe6d3);color:#111;scroll-behavior:smooth}
+  /* Light / Modern look by default (user chose modern) */
+  .site{max-width:var(--maxw);margin:28px auto;padding:18px}
+  header{display:flex;align-items:center;justify-content:space-between;gap:14px}
+  .brand{display:flex;flex-direction:column}
+  h1{margin:0;font-family:Georgia,serif;color:#2b4d6b;font-size:28px}
+  .subtitle{color:var(--muted);font-size:14px}
+  nav.top{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+  nav.top a{padding:8px 12px;border-radius:8px;text-decoration:none;color:#2b6cb0;font-weight:600}
+  nav.top a:hover{background:rgba(43,108,176,0.07)}
+  .btn{padding:8px 12px;border-radius:8px;border:0;cursor:pointer;background:#2b6cb0;color:white}
+  .ghost{background:transparent;border:1px solid #2b6cb0;color:#2b6cb0}
+  main{display:grid;grid-template-columns:1fr 320px;gap:22px;margin-top:18px}
+  article.card{background:white;padding:20px;border-radius:var(--radius);box-shadow:0 8px 30px rgba(15,23,32,0.06)}
+  aside.panel{position:sticky;top:22px;background:white;padding:16px;border-radius:12px;height:max-content;box-shadow:0 8px 30px rgba(15,23,32,0.04)}
+  .toc strong{display:block;margin-bottom:8px}
+  .controls{display:flex;gap:8px;margin:12px 0;flex-wrap:wrap}
+  input[type="search"]{padding:8px;border-radius:8px;border:1px solid #e6e6e6;min-width:180px}
+  h2{margin-top:18px;border-bottom:1px solid #eee;padding-bottom:8px;color:#184a78}
+  p{line-height:1.7}
+  ul{margin-left:18px}
+  .timeline{margin-top:12px}
+  .timeline .row{display:flex;gap:12px;align-items:flex-start;margin:12px 0}
+  .dot{width:12px;height:12px;background:#2b6cb0;border-radius:50%;margin-top:6px}
+  .year{font-weight:700;color:#2b6cb0;width:80px}
+  /* Accordion */
+  .acc-item{border:1px solid #eef3f6;border-radius:8px;overflow:hidden;margin:10px 0}
+  .acc-header{background:#fbfbfb;padding:10px;cursor:pointer}
+  .acc-body{padding:12px;display:none;background:white}
+  /* Quiz */
+  .quiz q-wrap{display:block}
+  .question{margin:12px 0;padding:12px;border-radius:10px;background:linear-gradient(180deg,#fff,#fbfbfd);border:1px solid #f0f4f7}
+  .options{display:flex;flex-direction:column;gap:8px;margin-top:8px}
+  .option{padding:10px;border-radius:8px;border:1px solid #e6eef9;cursor:pointer}
+  .option:hover{background:#eef8ff}
+  .result{margin-top:12px;padding:10px;border-radius:8px;border:1px dashed #cbdff6;background:#f6fbff}
+  /* Modal */
+  .modal{position:fixed;inset:0;background:rgba(0,0,0,0.5);display:none;align-items:center;justify-content:center;padding:20px;z-index:60}
+  .modal .card{max-width:720px;width:100%}
+  /* Footer */
+  footer{margin-top:18px;text-align:center;color:#596a78;font-size:14px}
+  /* Dark toggle support */
+  .dark html, .dark body{background:#07121a;color:#dbeafe}
+  .dark .card{background:#071724;color:#dbeafe}
+  .dark aside.panel{background:#071724;color:#dbeafe;border:1px solid rgba(255,255,255,0.03)}
+  .dark nav.top a{color:#9fc9ff}
+  .dark .ghost{border-color:rgba(255,255,255,0.08);color:#e6f3ff}
+  /* Responsive */
+  @media(max-width:980px){
+    main{grid-template-columns:1fr}
+    aside.panel{position:relative;top:auto}
+  }
+</style>
+</head>
+<body>
+<div class="site" id="site">
+  <header>
+    <div class="brand">
+      <h1>Кенесары Қасымұлы</h1>
+      <div class="subtitle">(шамамен 1802—1847) — ұлт-азаттық қозғалыстың көсемі</div>
+    </div>
+
+    <nav class="top" aria-label="Негізгі навигация">
+      <a href="#intro">Кіріспе</a>
+      <a href="#bio">Өмірбаян</a>
+      <a href="#koterilis">Көтеріліс</a>
+      <a href="#timeline">Хронология</a>
+      <a href="#quiz">Викторина</a>
+      <a href="#contact">Байланыс</a>
+      <button id="darkToggle" class="ghost" title="Түнгі режим">Қараңғы</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- MAIN CONTENT -->
+    <article class="card" id="content">
+      <nav class="toc" aria-label="Мазмұн кестесі">
+        <strong>Мазмұны</strong>
+        <ul>
+          <li><a href="#intro">Кіріспе</a></li>
+          <li><a href="#bio">Өмірбаян</a></li>
+          <li><a href="#koterilis">Көтеріліс</a></li>
+          <li><a href="#battles">Негізгі шайқастар</a></li>
+          <li><a href="#timeline">Хронология</a></li>
+          <li><a href="#quiz">Викторина</a></li>
+          <li><a href="#contact">Байланыс</a></li>
+        </ul>
+      </nav>
+
+      <section id="intro">
+        <h2>Кіріспе</h2>
+        <p>Кенесары Қасымұлы — XIX ғасырдағы қазақ халқының Ресей империясының отарлық саясатына қарсы шыққан көсемдерінің бірі.
+        Ол 1837—1847 жылдары көтерілісті басқарды және қазақ қоғамының жер мәселесі мен өзін-өзі басқару құқығын қорғауды мақсат етті.</p>
+      </section>
+
+      <section id="bio">
+        <h2>Туғаны және өмірбаяны</h2>
+        <p>Кенесарының туған жылы шамамен <strong>1802</strong> деп келтіріледі. Ол Қасым сұлтан ұрпағы, Абылай әулетіне жақын туыстық байланысы бар.
+        Балалық шағы мен жастық жылдарының нақты деректері архивте фрагменттік сақталған. Жас кезінде ол ру мәселелеріне араласып, көшбасшылық қасиеттерін көрсетті.</p>
+      </section>
+
+      <section id="koterilis">
+        <h2>Көтеріліс — 1837—1847</h2>
+        <p>Көтерілістің себептері: жерді тәркілеу, салықтардың күшеюі, әкімшілік араласу және жергілікті халықтың материалдық жағдайының нашарлауы.</p>
+
+        <div class="acc-item">
+          <div class="acc-header">Негізгі себептер</div>
+          <div class="acc-body">
+            <ul>
+              <li>Жерге қатысты саяси қимылдар</li>
+              <li>Отарлау саясаты және салық</li>
+              <li>Руаралық шиеленістер</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="acc-item">
+          <div class="acc-header">Ұйымдастыру және тактика</div>
+          <div class="acc-body">
+            <p>Кенесары партизандық және мобильді ұрыс тәсілдерін пайдаланды: жылдам шабуылдар, жергілікті маршруттарды білу және уақытша одақтар құру.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="battles">
+        <h2>Таңдамалы шайқастар мен оқиғалар</h2>
+
+        <article class="acc-item">
+          <div class="acc-header">Бастапқы шабуылдар (1837—1839)</div>
+          <div class="acc-body">
+            <p>Алғашқы кезеңде Кенесары жергілікті бекіністерге және шеткі әкімшілік пунктілерге қысым жасады. Бұл әрекеттер ресейлік жауаптарын тудырды.</p>
+          </div>
+        </article>
+
+        <article class="acc-item">
+          <div class="acc-header">Аймақтық қарсы шабуылдар (1841—1844)</div>
+          <div class="acc-body">
+            <p>Бұл кезде қақтығыстар ұлғайып, екі жақ та жүйелі әскери шараларды қолға алды. Қысым артқан сайын кейбір ру басшылары бетбұрыс жасады.</p>
+          </div>
+        </article>
+
+        <article class="acc-item">
+          <div class="acc-header">Соңғы шайқастар және қаза болуы (1847)</div>
+          <div class="acc-body">
+            <p>Көтерілістің соңында Кенесарының жағдайы қиындай бастады; дереккөздер әртүрлі нұсқалар береді — оның қаза болуы немесе тұтқынға түсу туралы әртүрлі есептер бар.</p>
+          </div>
+        </article>
+      </section>
+
+      <section id="timeline">
+        <h2>Хронология</h2>
+        <div class="timeline" aria-hidden="false">
+          <div class="row"><div class="dot" aria-hidden="true"></div><div class="year">≈1802</div><div>Кенесарының дәстүр бойынша туған жылы (шамамен).</div></div>
+          <div class="row"><div class="dot"></div><div class="year">1837</div><div>Көтерілістің ашық басталуы.</div></div>
+          <div class="row"><div class="dot"></div><div class="year">1841—1844</div><div>Аймақтық қақтығыстар мен келіссөздер.</div></div>
+          <div class="row"><div class="dot"></div><div class="year">1847</div><div>Соңғы шайқастар; Кенесарының қазасы (дереккөздер әртүрлі).</div></div>
+        </div>
+      </section>
+
+      <section id="quiz">
+        <h2>Викторина — Қанша білесің?</h2>
+        <div id="quizWrap">
+          <div class="question" data-answer="b">
+            <div><strong>1.</strong> Кенесарының көтерілісі қай жылы басталды?</div>
+            <div class="options">
+              <div class="option" data-key="a">1820</div>
+              <div class="option" data-key="b">1837</div>
+              <div class="option" data-key="c">1850</div>
+            </div>
+          </div>
+
+          <div class="question" data-answer="c">
+            <div><strong>2.</strong> Кенесары қандай мақсатты көздеді?</div>
+            <div class="options">
+              <div class="option" data-key="a">Тек байлық жинау</div>
+              <div class="option" data-key="b">Орыс империясына қосылу</div>
+              <div class="option" data-key="c">Жер және дербестік үшін күрес</div>
+            </div>
+          </div>
+
+          <div class="question" data-answer="a">
+            <div><strong>3.</strong> Кенесары қай дәуірде өмір сүрді?</div>
+            <div class="options">
+              <div class="option" data-key="a">XIX ғ.</div>
+              <div class="option" data-key="b">XVIII ғ.</div>
+              <div class="option" data-key="c">XX ғ.</div>
+            </div>
+          </div>
+
+          <div style="margin-top:12px">
+            <button id="checkQuiz" class="btn">Бағалау</button>
+            <div id="quizResult" class="result" style="display:none"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="legacy">
+        <h2>Мұрасы және тарихшылар пікірі</h2>
+        <p>Кенесарының әрекеттері қазақ ұлттық санасын оятты және жер, тәуелсіздік туралы идеяларды нығайтты. Тарихшылар оның рөлін әртүрлі бағалайды: біреулер батыр деп санайды, басқалары — тарихи контекстке қарай сын көзбен қарайды.</p>
+      </section>
+
+      <section id="sources">
+        <h2>Дереккөздер</h2>
+        <ol class="refs">
+          <li>«Кенесары Қасымұлы» — Қазақша Уикипедия. (kk.wikipedia.org)</li>
+          <li>Ресей империясының архивтік материалдары (мемлекеттік архивтер)</li>
+          <li>Тарихшылардың академиялық еңбектері мен монографиялары</li>
+        </ol>
+      </section>
+
+      <!-- Contact section -->
+      <section id="contact">
+        <h2>Байланыс</h2>
+        <p>Сұрақтар немесе ұсыныстар болса, төмендегі форманы толтырып жіберің — хат поштаға Formspree арқылы жетеді.</p>
+
+        <form id="contactForm" action="https://formspree.io/f/mwkzvxyz" method="POST">
+          <label>Аты-жөніңіз:<br><input name="name" type="text" required></label><br><br>
+          <label>Email:<br><input name="email" type="email" required></label><br><br>
+          <label>Хабарлама:<br><textarea name="message" rows="4" required></textarea></label><br><br>
+          <button type="submit" class="btn">Жіберу</button>
+          <div id="formNote" class="small" style="margin-top:8px"></div>
+        </form>
+      </section>
+
+      <footer style="margin-top:18px">© 2025 — Сайт: Сіздің атыңыз. Мәліметтер ашық көздерге негізделген.</footer>
+    </article>
+
+    <!-- ASIDE -->
+    <aside class="panel" aria-label="Жедел мәліметтер">
+      <div style="font-weight:700;margin-bottom:8px">Жедел мәліметтер</div>
+      <div style="margin-bottom:6px"><strong>Өмірі:</strong> ≈1802—1847</div>
+      <div style="margin-bottom:6px"><strong>Рөлі:</strong> Хан, қолбасшы</div>
+      <div style="margin-bottom:6px"><strong>Негізгі жылдар:</strong> 1837—1847</div>
+      <div style="margin-top:12px">
+        <input id="miniSearch" type="search" placeholder="Мәтіннен іздеу...">
+        <button id="miniSearchBtn" class="btn" style="margin-top:8px">Іздеу</button>
+      </div>
+      <hr style="margin:12px 0">
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button class="btn" onclick="document.getElementById('intro').scrollIntoView({behavior:'smooth'})">Кіріспе</button>
+        <button class="btn ghost" onclick="copyPageLink()">Сілтемені көшіру</button>
+      </div>
+    </aside>
+  </main>
+
+  <div id="modal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <article class="card" style="max-width:680px">
+      <button id="modalClose" style="float:right;background:transparent;border:0;font-size:18px;cursor:pointer">✕</button>
+      <h3 id="modalTitle">Хабар</h3>
+      <div id="modalBody"></div>
+    </article>
+  </div>
+
+  <footer style="text-align:center;margin-top:22px;color:#6b7280">Жасаған: Сіздің атыңыз — Егер қаласаңыз, мен бұл сайтын GitHub Pages-ке жариялап, нақты сілтемесін дайындап беремін.</footer>
+</div>
+
+<script>
+/* --- UI: accordion --- */
+document.querySelectorAll('.acc-header').forEach(h=>{
+  h.addEventListener('click', ()=> {
+    const body = h.nextElementSibling;
+    const open = body.style.display === 'block';
+    document.querySelectorAll('.acc-body').forEach(b=>b.style.display='none');
+    body.style.display = open ? 'none' : 'block';
+  });
+});
+
+/* --- Search: main search + mini --- */
+function doSearch(){
+  const q = (document.getElementById('q')?.value || '').trim().toLowerCase();
+  if(!q){ alert('Іздеу үшін мәтін енгізіңіз'); return; }
+  // clear prev
+  document.querySelectorAll('.highlight').forEach(e=>e.classList.remove('highlight'));
+  const nodes = document.querySelectorAll('main p, main li, main h2, main h3');
+  for (let el of nodes){
+    if(el.innerText.toLowerCase().includes(q)){
+      el.classList.add('highlight');
+      el.scrollIntoView({behavior:'smooth', block:'center'});
+      return;
+    }
+  }
+  alert('Табылмады: ' + q);
+}
+document.getElementById('miniSearchBtn').addEventListener('click', ()=> {
+  const q = document.getElementById('miniSearch').value.trim();
+  document.getElementById('q').value = q;
+  doSearch();
+});
+
+/* --- Copy link --- */
+function copyPageLink(){
+  const url = location.href;
+  if(navigator.clipboard) navigator.clipboard.writeText(url).then(()=> showModal('Сілтеме', 'Сілтеме көшірілді буферге: ' + url));
+  else prompt('Сілтемені көшіріп алыңыз:', url);
+}
+
+/* --- Modal helpers --- */
+function showModal(title, html){
+  const modal = document.getElementById('modal');
+  document.getElementById('modalTitle').innerText = title;
+  document.getElementById('modalBody').innerHTML = html;
+  modal.style.display = 'flex'; modal.setAttribute('aria-hidden','false');
+}
+document.getElementById('modalClose').addEventListener('click', ()=> {
+  document.getElementById('modal').style.display='none'; document.getElementById('modal').setAttribute('aria-hidden','true');
+});
+document.getElementById('modal').addEventListener('click', (e)=> { if(e.target===document.getElementById('modal')){ document.getElementById('modal').style.display='none'; } });
+
+/* --- Quiz logic --- */
+document.querySelectorAll('#quiz .question').forEach(q=>{
+  q.querySelectorAll('.option').forEach(opt=>{
+    opt.addEventListener('click', ()=> {
+      // remove selection
+      q.querySelectorAll('.option').forEach(o=>o.style.outline='none');
+      opt.style.outline = '3px solid rgba(43,108,176,0.25)';
+      q.dataset.selected = opt.dataset.key;
+    });
+  });
+});
+document.getElementById('checkQuiz').addEventListener('click', ()=>{
+  const qs = document.querySelectorAll('#quiz .question');
+  let correct = 0;
+  qs.forEach(q=>{
+    if(q.dataset.selected && q.dataset.selected === q.dataset.answer) correct++;
+  });
+  const total = qs.length;
+  const score = Math.round((correct/total)*100);
+  const html = '<strong>Нәтиже:</strong> ' + correct + ' / ' + total + ' — ' + score + '%';
+  document.getElementById('quizResult').style.display='block';
+  document.getElementById('quizResult').innerHTML = html;
+  document.getElementById('quizResult').scrollIntoView({behavior:'smooth', block:'center'});
+});
+
+/* --- Contact form: show note on submit (Formspree will handle actual send) --- */
+document.getElementById('contactForm').addEventListener('submit', (e)=>{
+  // let Formspree submit normally, but show note
+  document.getElementById('formNote').innerText = 'Хабарлама жіберілді. Егер жауап қажет болса email мекенжайыңызға жауап келуін тексеріңіз.';
+});
+
+/* --- Dark mode toggle --- */
+document.getElementById('darkToggle').addEventListener('click', function(){
+  document.documentElement.classList.toggle('dark');
+  // update all toggles if more than one
+  document.querySelectorAll('#darkToggle').forEach(b=>b.textContent = document.documentElement.classList.contains('dark') ? 'Жарық' : 'Қараңғы');
+});
+
+/* --- small UX: highlight anchors when navigating --- */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click', (e)=>{
+    // let smooth scroll happen; then flash
+    setTimeout(()=> {
+      const target = document.querySelector(a.getAttribute('href'));
+      if(target) { target.style.transition='background 0.6s'; target.style.background='rgba(255,250,200,0.6)'; setTimeout(()=> target.style.background='transparent',1000); }
+    },300);
+  });
+});
+
+/* Accessibility: keyboard close modal */
+document.addEventListener('keydown', (e)=>{ if(e.key==='Escape'){ document.getElementById('modal').style.display='none'; } });
+
+</script>
+</body>
+</html>
